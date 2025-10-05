@@ -1,0 +1,14 @@
+.contenedor {
+    background-color: rgb(238, 173, 231);
+    border-radius: 10%;
+    font-family: 'Courier New', Courier, monospace;
+    width: 200px;
+    text-align: center;
+    padding: 15px;
+    border: 2px solid mediumpurple; 
+}
+
+img{
+    width: 120px;
+    height: 120px;
+}

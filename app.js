@@ -4,10 +4,37 @@ async function getPokemon(id) {
     return data
 }
 
-/* Ejemplo de cómo usar la función correctamente:
-getPokemon(1).then(data => {
-    console.log(data)
-})
-*/
+console.log(getPokemon(175))
 
-console.log(getPokemon(3))
+
+// Crear el HTML de la tarjeta del Pokémon y añadirlo al contenedor
+function createCard(pokemon) {
+    const nombre = pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1);
+    const imagen = pokemon.sprites.front_default;
+    const altura = pokemon.height;
+    const peso = pokemon.weight;
+    const tipos = pokemon.types.map(t => t.type.name).join(', ');
+
+    // Crea el HTML de la tarjeta
+    const cardHTML = `
+        <div class="card">
+            <img src="${imagen}" alt="${nombre}">
+            <h3>${nombre}</h3>
+            <p>Altura: ${altura}</p>
+            <p>Peso: ${peso}</p>
+            <p>Tipo: ${tipos}</p>
+        </div>
+    `;
+
+    // Inserta la tarjeta en el contenedor
+    let contenedor = document.querySelector(".contenedor");
+    contenedor.innerHTML += cardHTML;
+}
+
+// Ejemplo de uso para mostrar el Pokémon con ID 175
+async function mostrarPokemon(id) {
+    const poke = await getPokemon(id);
+    createCard(poke);
+}
+
+mostrarPokemon(175);
