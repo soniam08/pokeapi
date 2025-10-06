@@ -1,5 +1,4 @@
 .contenedor {
-    border-radius: 10%;
     font-family: 'Courier New', Courier, monospace;
     text-align: center;
     padding: 15px;
@@ -8,13 +7,10 @@
     gap: 18px;
     justify-content: flex-start;
     align-items: flex-start;
-    background-color: rgb(238, 173, 231);
-    border-radius: 10%;
     font-family: 'Courier New', Courier, monospace;
-    width: 200px;
+    width: 100%;
     text-align: center;
     padding: 15px;
-    border: 2px solid mediumpurple; 
 }
 
 img{
@@ -33,4 +29,49 @@ img{
     display: flex;
     flex-direction: column;
     align-items: center;
+    box-shadow: 0 2px 8px grey;
+}
+
+.card:hover{
+    transform: scale(1.07);
+    cursor: pointer;
+}
+
+
+body{
+    background-color:rgb(152, 229, 235);
+}
+
+h1 {
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    color: hotpink;
+    background: linear-gradient(90deg, #ffe0f7 0%, #fff5fa 100%);
+    border-radius: 12px;
+    box-shadow: 0 2px 12px 0 rgba(200,100,200,0.19);
+    padding: 18px 0 16px 0;
+    margin: 22px auto 28px;
+    font-size: 2.6em;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 7px #fff0fa, 1px 1px 1px #eee;
+    border-bottom: 3.5px solid #ff70c6;
+    max-width: 520px;
+}
+
+button{
+    position: fixed;
+    right: 32px;
+    bottom: 32px;
+    padding: 12px 36px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.2em;
+    background: hotpink;
+    color: white;
+    border: 1.5px solid black;
+    border-radius: 8px;
+    box-shadow: 0 2px 14px #e7c6e133;
+}
+
+button:hover{
+    background: #e99cd6;
 }
