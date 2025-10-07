@@ -90,7 +90,7 @@ async function mostrarPokemon(id) {
     createCard(poke);
 }
 
-//Funcionalidad del botón
+//Funcionalidad del botón cargar más
 let inicio = 1;
 const cantidadPorLote = 10;
 
@@ -107,3 +107,46 @@ document.getElementById("boton").addEventListener("click", mostrarLotePokemons);
 
 // Al cargar la página, muestra el primer lote
 mostrarLotePokemons();
+
+//Buscador
+async function buscarPokemonPorNombre(nombre) {
+    try {
+        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${nombre.toLowerCase()}`);
+        if (!response.ok) throw new Error('Pokemon no encontrado :c');
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        return null;  // Pokémon no encontrado
+    }
+}
+
+function limpiarContenedor() {
+    document.querySelector(".contenedor").innerHTML = "";
+}
+//Botón del buscador
+document.getElementById("botonbusqueda").addEventListener("click", async () => {
+    // Captura el valor del input
+    const input = document.getElementById("buscador");
+    const nombre = input.value.trim();
+
+    // Si está vacío, no hace nada
+    if (nombre === "") {
+        console.log("El campo está vacío");
+        return;
+    }
+
+    // Limpia el contenedor antes de mostrar resultados nuevos
+    limpiarContenedor();
+
+    // Busca el Pokemon por nombre
+    const pokemon = await buscarPokemonPorNombre(nombre);
+
+    if (pokemon) {
+        createCard(pokemon); // Si existe, muestra la tarjeta
+    } else {
+        alert("Pokémon no encontrado :c"); // Si no, muestra alerta
+    }
+
+    // Limpia el input después de buscar
+    input.value = "";
+});
