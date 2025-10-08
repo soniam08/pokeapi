@@ -72,7 +72,7 @@ function createCard(pokemon) {
 
 async function mostrarDiezPokemons() {
     const promesas = [];
-    for (let id = 1; id <= 50; id++) {
+    for (let id = 1; id <= 151; id++) {
         promesas.push(mostrarPokemon(id));
     }
     await Promise.all(promesas);
@@ -91,7 +91,7 @@ async function mostrarPokemon(id) {
 }
 
 //Funcionalidad del botón cargar más
-let inicio = 1;
+let inicio = 152;
 const cantidadPorLote = 10;
 
 async function mostrarLotePokemons() {
