@@ -8,8 +8,8 @@ async function getPokemon(id) {
 function createCard(pokemon) {
     const nombre = pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1); //La inicial en mayús y el resto en minuscula
     const imagen = pokemon.sprites.front_default;  //Extrae la imagen
-    const altura = pokemon.height;
-    const peso = pokemon.weight;
+    const altura = pokemon.height/10;
+    const peso = pokemon.weight/10;
     const tipos = pokemon.types.map(t => t.type.name).join(', '); //Map crea un vector de los tipos y los separa con el join , si fuera mas de uno
 
     // Determinar color según el primer tipo
