@@ -10,7 +10,7 @@ function createCard(pokemon) {
     const imagen = pokemon.sprites.front_default;  //Extrae la imagen
     const altura = pokemon.height/10;
     const peso = pokemon.weight/10;
-    const tipos = pokemon.types.map(t => t.type.name).join(', '); //Map crea un vector de los tipos y los separa con el join , si fuera mas de uno
+    const tipos = pokemon.types.map(t => t.type.name.charAt(0).toUpperCase() + t.type.name.slice(1)).join(', ');//Map crea un vector de los tipos y los separa con el join , si fuera mas de uno
 
     // Determinar color según el primer tipo
     let fondoColor = 'rgba(228, 186, 224, 1)'; // color por defecto
@@ -59,8 +59,8 @@ function createCard(pokemon) {
         <div class="card" style="background-color: ${fondoColor};">
             <img src="${imagen}" alt="${nombre}">
             <h3>${nombre}</h3>
-            <p>Altura: ${altura}</p>
-            <p>Peso: ${peso}</p>
+            <p>Altura: ${altura} m</p>
+            <p>Peso: ${peso} kg</p>
             <p>Tipo: ${tipos}</p>
         </div>
     `;
