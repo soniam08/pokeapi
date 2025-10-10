@@ -68,11 +68,13 @@ function createCard(pokemon) {
     // Inserta la tarjeta en el contenedor
     let contenedor = document.querySelector(".contenedor");
     contenedor.innerHTML += cardHTML;
+
 }
+//Version original
 
 async function mostrarDiezPokemons() {
     const promesas = [];
-    for (let id = 1; id <= 151; id++) {
+    for (let id = 1; id <= 50; id++) {
         promesas.push(mostrarPokemon(id));
     }
     await Promise.all(promesas);
@@ -80,15 +82,59 @@ async function mostrarDiezPokemons() {
 
 mostrarDiezPokemons();
 
-// Para mostrar cada Pokémon individual en el futuro:
-// async function mostrarPokemon(id) {
-//     const poke = await getPokemon(id);
-//     createCard(poke);
-// }
 async function mostrarPokemon(id) {
     const poke = await getPokemon(id);
     createCard(poke);
 }
+
+//Version con allsettled 
+
+/*
+async function mostrarPokemons() {
+    const promesas = [];
+    for (let id = 1; id <= 151; id++) {
+        promesas.push(mostrarPokemon(id));
+    }
+    const resultados = await Promise.allSettled(promesas);
+    resultados.forEach((resultado, i) => {
+        if (resultado.status === 'fulfilled') {
+            console.log('Pokémon', i + 1, ':', resultado.value);
+        } else {
+            console.warn('Pokémon', i + 1, 'falló:', resultado.reason);
+        }
+    });
+}
+
+mostrarPokemons();*/
+
+/*Version any
+
+async function mostrarPrimerPokemonExitoso() {
+    const promesas = [];
+    for (let id = 1; id <= 151; id++) {
+        promesas.push(mostrarPokemon(id));
+    }
+    try {
+        const primerExito = await Promise.any(promesas);
+        console.log('Primer Pokémon exitoso:', primerExito);
+    } catch (error) {
+        // Si todas las promesas fallan, error es un AggregateError
+        console.error('Todas las promesas fallaron:', error.errors);
+    }
+}
+
+mostrarPrimerPokemonExitoso();*/
+
+/* Para mostrar cada Pokémon individual en el futuro:
+async function mostrarPokemon(id) {
+    const poke = await getPokemon(id);
+    createCard(poke);
+ }
+async function mostrarPokemon(id) {
+    const poke = await getPokemon(id);
+    createCard(poke);
+}
+*/
 
 //Funcionalidad del botón cargar más
 let inicio = 152;
